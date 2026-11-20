@@ -59,11 +59,11 @@
     "unsaved_changes_message": "Kaydedilmemiş Değişiklikler Var. Şimdi Ayrılırsan Bunlar Silinir. Ayrılmak İstiyor Musun?"
   },
   "title": {
-    "login": "CLIProxyAPI Yönetim Merkezi",
-    "abbr": "CPAMC"
+    "login": "Styx Router",
+    "abbr": "Styx Router"
   },
   "splash": {
-    "title": "CLIProxyAPI",
+    "title": "Styx Router",
     "subtitle": "Yönetim Merkezi"
   },
   "login": {
@@ -1913,7 +1913,7 @@
     "models_catalog_refresh_success": "Model kataloğu güncellendi.",
     "models_catalog_refresh_failed": "Model kataloğu güncellenemedi",
     "title": "Yönetim Merkezi Bilgisi",
-    "about_title": "CLIProxyAPI Yönetim Merkezi",
+    "about_title": "Styx Router",
     "models_title": "Kullanılabilir Modeller",
     "models_desc": "“Listeyi yenile”ye tıklayarak güncel kullanılabilir modelleri görüntüleyin. Yeni bir model görünmüyorsa “Model kataloğunu güncelle”yi deneyin.",
     "models_loading": "Kullanılabilir Modeller Yükleniyor...",
