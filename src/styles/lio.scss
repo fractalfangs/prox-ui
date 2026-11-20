@@ -1,0 +1,654 @@
+/**
+ * lio.cat inspired presentation layer.
+ *
+ * Loaded last from global.scss. Tokens live in themes.scss; this file only
+ * holds the cross-cutting rules that tokens cannot express: the single-column
+ * shell with a text-link navigation row, flat surfaces, lowercase chrome,
+ * link and table treatments. Feature modules keep their own layout.
+ *
+ * CSS module class names follow `[name]__[local]___[hash]` (vite.config.ts),
+ * so a few attribute selectors below match module-local names such as
+ * `metricCard` or `panel` without touching every module.
+ */
+
+@use './variables.scss' as *;
+
+$column-width: 56rem;
+$gutter: 24px;
+
+// ---------------------------------------------------------------------------
+// Base typography
+// ---------------------------------------------------------------------------
+
+html,
+body {
+  background: var(--page-bg);
+  color: var(--page-fg);
+}
+
+body {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  line-height: 1.6;
+  font-variant-ligatures: none;
+}
+
+// Monospace everywhere, including module styles that set their own stack.
+body *:not(svg):not(svg *) {
+  font-family: var(--font-mono) !important;
+}
+
+::selection {
+  background: var(--accent-color);
+  color: var(--page-bg);
+}
+
+// Square, flat, unblurred: no rounded panels, shadows, glows or glass.
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+// Keyboard focus stays visible now that focus rings are no longer box-shadows.
+:focus-visible {
+  outline: 2px solid var(--accent-color) !important;
+  outline-offset: 2px;
+}
+
+// Headings are modest and lowercase.
+.main-content :is(h1, h2) {
+  font-size: 1.25rem !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0 !important;
+}
+
+.main-content :is(h3, h4, h5, h6) {
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+}
+
+// Lowercase applies to UI chrome only. User data (inputs, code, table cells,
+// key/URL readouts) keeps its case; opt out anywhere with `.preserve-case`.
+:is(
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  label,
+  legend,
+  th,
+  button,
+  .btn,
+  [role='tab'],
+  [role='menuitem'],
+  [role='menuitemradio'],
+  .nav-item,
+  .nav-group-label,
+  .sidebar-brand-title,
+  .card-header .title,
+  .modal-title,
+  .status-badge,
+  .pill,
+  .empty-title,
+  .form-group > label,
+  .hint,
+  [class*='Action___'],
+  [class*='__cta'],
+  [class*='Cta___'],
+  [class*='Tab___'],
+  [class*='__tab___']
+) {
+  text-transform: lowercase;
+}
+
+:is(input, textarea, select, option, code, pre, kbd, samp, .cm-editor, .preserve-case),
+:is(input, textarea, select, option, code, pre, kbd, samp, .cm-editor, .preserve-case) * {
+  text-transform: none !important;
+}
+
+// Upper-case eyebrow labels become lowercase like the rest of the chrome.
+.main-content [class*='eyebrow' i],
+.main-content [class*='kicker' i],
+.nav-group-label {
+  text-transform: lowercase !important;
+  letter-spacing: 0 !important;
+}
+
+// ---------------------------------------------------------------------------
+// Links
+// ---------------------------------------------------------------------------
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  text-underline-offset: 4px;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
+  }
+}
+
+// External links get the lio.cat arrow; in-app router links stay plain.
+.main-content a:is([target='_blank'], [href^='http']):not(:has(img, svg)) {
+  position: relative;
+  padding-right: 1em;
+
+  &::after {
+    content: '\2197';
+    position: absolute;
+    top: 0;
+    right: 0.1em;
+    line-height: 1;
+    font-size: 0.85em;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Shell: one centered column with brand + actions, a wrapping nav row, content.
+// ---------------------------------------------------------------------------
+
+.app-shell {
+  display: grid !important;
+  grid-template-columns: minmax($gutter, 1fr) minmax(0, $column-width) minmax($gutter, 1fr);
+  grid-template-rows: auto auto minmax(0, 1fr);
+  height: 100vh !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  background: var(--page-bg);
+
+  @supports (height: 100dvh) {
+    height: 100dvh !important;
+  }
+}
+
+.app-shell .main-body,
+.app-shell .sidebar {
+  display: contents !important;
+}
+
+.top-gradient-blur,
+.sidebar-backdrop,
+.nav-tooltip,
+.main-header .sidebar-toggle-floating,
+.main-header .mobile-sidebar-actions,
+.nav-group-label,
+.nav-group-divider,
+.nav-drawer-caret,
+.sidebar-brand-logo {
+  display: none !important;
+}
+
+// Brand on the left of the top row.
+.app-shell .sidebar-header {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  justify-self: start;
+  min-height: 0;
+  margin: 0;
+  padding: 24px 0 8px;
+  border: 0;
+}
+
+.app-shell .sidebar-brand {
+  padding: 0;
+  gap: 0;
+}
+
+.app-shell .sidebar-brand-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--page-fg);
+}
+
+// Header actions on the right of the top row.
+.app-shell .main-header {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  justify-self: end;
+  position: relative !important;
+  inset: auto !important;
+  height: auto !important;
+  padding: 24px 0 8px;
+  pointer-events: auto;
+  background: none;
+  z-index: $z-dropdown + 1;
+
+  .header-actions {
+    position: static !important;
+    padding: 0 !important;
+    gap: 4px !important;
+    max-width: none !important;
+    border: 0 !important;
+    background: none !important;
+  }
+
+  .header-actions .btn {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    color: var(--accent-color);
+    background: none !important;
+
+    &:hover {
+      color: var(--accent-color);
+      background: none;
+      opacity: 0.7;
+    }
+  }
+
+  .language-menu-popover,
+  .theme-menu-popover {
+    top: calc(100% + 6px);
+    right: 0 !important;
+    left: auto !important;
+    border: 1px solid var(--rule-color);
+    background: var(--page-bg);
+  }
+
+  .language-menu-option {
+    background: none !important;
+    color: var(--page-fg);
+
+    &:hover,
+    &.active {
+      color: var(--accent-color);
+    }
+  }
+
+  .theme-card {
+    background: none !important;
+    border-color: transparent !important;
+
+    &.active .theme-card-label,
+    &:hover .theme-card-label {
+      color: var(--accent-color);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    &.active .theme-card-preview {
+      outline: 2px solid var(--accent-color);
+      outline-offset: 2px;
+    }
+  }
+}
+
+// Navigation: a wrapping row of plain lowercase text links.
+.app-shell .nav-section {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1rem !important;
+  padding: 0.5rem 0 1rem;
+  border-bottom: 1px solid var(--rule-color);
+}
+
+.app-shell .nav-group,
+.app-shell .nav-drawer,
+.app-shell .nav-sub-list {
+  display: contents !important;
+}
+
+.app-shell .nav-item {
+  display: inline-flex !important;
+  align-items: baseline;
+  gap: 0.35em;
+  width: auto !important;
+  padding: 0 !important;
+  border: 0 !important;
+  margin: 0 !important;
+  background: none !important;
+  color: var(--accent-color) !important;
+  font-size: 1.125rem !important;
+  font-weight: 400 !important;
+  line-height: 1.6;
+  text-decoration: none;
+  text-underline-offset: 4px;
+  transform: none !important;
+
+  &::before,
+  &::after {
+    display: none !important;
+  }
+
+  &:hover,
+  &:focus-visible,
+  &.active {
+    text-decoration: underline;
+  }
+
+  .nav-icon {
+    display: none;
+  }
+
+  .nav-label {
+    overflow: visible;
+  }
+
+  // Counts read as plain muted text next to the label.
+  .nav-badge {
+    position: static !important;
+    min-width: 0 !important;
+    height: auto !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: none !important;
+    color: var(--text-muted) !important;
+    font-size: 0.8em !important;
+    font-weight: 400 !important;
+  }
+}
+
+// The sidebar's collapsed state hides labels, so fall back to the icons.
+.app-shell .sidebar.collapsed .nav-item .nav-icon {
+  display: inline-flex;
+  color: var(--accent-color);
+}
+
+// Content scrolls below the top rows; the page column stays centered inside it.
+.app-shell .content {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  height: auto !important;
+  min-height: 0 !important;
+  overflow-y: auto;
+  scrollbar-gutter: auto;
+
+  &.content-logs,
+  &.content-plugin-resource {
+    overflow: hidden !important;
+  }
+}
+
+.app-shell .main-content {
+  width: 100%;
+  max-width: calc(#{$column-width} + #{$gutter * 2});
+  margin: 0 auto;
+  padding: 2rem $gutter 3rem !important;
+
+  &.main-content-logs {
+    max-width: none;
+    padding: 1rem $gutter !important;
+  }
+
+  &.main-content-plugin-resource {
+    max-width: none;
+    padding: 0 !important;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Flat surfaces: cards, panels and tiles lose their boxes.
+// ---------------------------------------------------------------------------
+
+.card,
+.main-content :is(
+    [class*='__card___'],
+    [class*='Card___'],
+    [class*='__panel___'],
+    [class*='Panel___'],
+    [class*='__tile___'],
+    [class*='Tile___'],
+    [class*='__surface___'],
+    [class*='__box___']
+  ) {
+  background: none !important;
+  background-image: none !important;
+  border-color: transparent !important;
+}
+
+// Module buttons and link-buttons drop their outlines and read as text.
+// Select triggers keep a rule so they still look like fields.
+.main-content :is(button, a[class]):not([aria-haspopup='listbox']):not([role='option']),
+[role='dialog'] :is(button, a[class]):not([aria-haspopup='listbox']):not([role='option']) {
+  border-color: transparent !important;
+}
+
+// Chips, badges, pills, segmented groups, empty states and side lists are
+// plain text blocks without frames or fills.
+.main-content
+  :is(
+    [class*='chip' i],
+    [class*='badge' i],
+    [class*='pill' i],
+    [class*='segmented' i],
+    [class*='__empty' i],
+    [class*='__placeholder___'],
+    [class*='__aside___'],
+    [class*='__trail___'],
+    [class*='__site___'],
+    [class*='Field-module__list___'],
+    [class*='CardLayoutSwitch-module__switch___'],
+    .empty-state,
+    .empty-icon
+  ):not(.btn-primary):not(.btn-danger) {
+  border-color: transparent !important;
+  background-color: transparent !important;
+}
+
+// Decorative glows, washes and ambient layers go away; data marks (bars, meters,
+// sparklines) are drawn with solid fills or SVG and are unaffected.
+.main-content
+  :is(
+    [class*='glow' i],
+    [class*='halo' i],
+    [class*='aurora' i],
+    [class*='sheen' i],
+    [class*='__ambient___'],
+    [class*='Wash___'],
+    [class*='__wash']
+  ) {
+  display: none !important;
+}
+
+// ---------------------------------------------------------------------------
+// Forms
+// ---------------------------------------------------------------------------
+
+input:not([type='checkbox']):not([type='radio']):not([type='range']),
+textarea,
+select,
+.input {
+  background-color: transparent !important;
+  border-color: var(--rule-color);
+  color: var(--page-fg);
+
+  &:focus {
+    border-color: var(--accent-color) !important;
+  }
+
+  &::placeholder {
+    color: var(--text-quaternary);
+  }
+}
+
+input[type='checkbox'],
+input[type='radio'],
+input[type='range'],
+progress {
+  accent-color: var(--accent-color);
+}
+
+// ---------------------------------------------------------------------------
+// Badges, callouts, notifications
+// ---------------------------------------------------------------------------
+
+.status-badge,
+.pill {
+  padding: 0;
+  border: 0 !important;
+  background: none !important;
+  color: var(--text-muted);
+}
+
+.status-badge {
+  &.success {
+    color: var(--success-color);
+  }
+
+  &.warning {
+    color: var(--warning-color);
+  }
+
+  &.error {
+    color: var(--error-color);
+  }
+}
+
+// Callouts: a 2px rule on the left, no fill.
+.error-box,
+.main-content [role='alert'],
+.main-content [role='note'] {
+  padding: 0 0 0 1rem !important;
+  border: 0 !important;
+  border-left: 2px solid var(--accent-color) !important;
+  background: none !important;
+}
+
+.error-box,
+.main-content [role='alert'] {
+  border-left-color: var(--error-color) !important;
+  color: var(--error-color);
+}
+
+// Toasts and other floating layers stay opaque, framed by a thin rule.
+.notification,
+.modal,
+[role='dialog'],
+[role='menu'],
+[role='listbox'],
+[role='tooltip'] {
+  background-color: var(--page-bg) !important;
+  background-image: none !important;
+  border: 1px solid var(--rule-color) !important;
+  color: var(--page-fg);
+}
+
+.modal-overlay {
+  background: color-mix(in srgb, var(--page-bg) 70%, transparent) !important;
+}
+
+.modal-header,
+.modal-footer {
+  border-color: var(--rule-color) !important;
+  background: none !important;
+}
+
+// ---------------------------------------------------------------------------
+// Tables and lists: no fills; header in accent; hover/selection in accent.
+// ---------------------------------------------------------------------------
+
+table {
+  border-collapse: collapse;
+}
+
+thead,
+thead tr,
+th {
+  background: none !important;
+}
+
+th {
+  color: var(--accent-color) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  border-bottom: 1px solid var(--rule-color) !important;
+}
+
+tbody tr,
+tbody td {
+  background: none !important;
+}
+
+td {
+  border-color: transparent !important;
+}
+
+tbody tr:hover > td,
+tbody tr[aria-selected='true'] > td,
+tbody tr[data-selected='true'] > td {
+  color: var(--accent-color);
+}
+
+.item-row {
+  background: none !important;
+  border-color: var(--rule-color) !important;
+}
+
+// ---------------------------------------------------------------------------
+// Scrollbars
+// ---------------------------------------------------------------------------
+
+::-webkit-scrollbar-track {
+  background: var(--page-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--rule-color);
+
+  &:hover {
+    background: var(--border-primary);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Phone width
+// ---------------------------------------------------------------------------
+
+@media (max-width: $breakpoint-mobile) {
+  .app-shell .sidebar-header,
+  .app-shell .main-header {
+    padding-top: 16px;
+  }
+
+  .app-shell .sidebar-brand-title {
+    font-size: 1.25rem;
+  }
+
+  .app-shell .main-header .header-actions .btn {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+  }
+
+  .app-shell .nav-item {
+    font-size: 1rem !important;
+  }
+
+  .app-shell .main-content {
+    padding: 1.25rem $gutter 2rem !important;
+
+    &.main-content-logs {
+      padding: 0.75rem 12px !important;
+    }
+  }
+
+  // Empty states stack instead of squeezing copy and actions side by side.
+  .empty-state {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  // The drawer sidebar is gone on phones too; nothing slides in.
+  .app-shell .sidebar {
+    transform: none !important;
+  }
+}

@@ -25,9 +25,8 @@ const getSystemTheme = (): ResolvedTheme => {
   return 'light';
 };
 
-const resolveAutoTheme = (): AppliedTheme => {
-  return getSystemTheme() === 'dark' ? 'dark' : 'white';
-};
+// Auto follows prefers-color-scheme: amber light or dark.
+const resolveAutoTheme = (): AppliedTheme => getSystemTheme();
 
 const normalizeResolvedTheme = (theme: AppliedTheme): ResolvedTheme => {
   return theme === 'dark' ? 'dark' : 'light';

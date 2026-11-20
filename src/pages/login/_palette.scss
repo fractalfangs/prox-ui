@@ -1,59 +1,60 @@
-// 登录页配色：左右同底、极简，跟随应用主题（html[data-theme]）。
-// - 浅色（默认，无 data-theme）：与应用浅色主题同一张暖纸底
-// - 纯白（data-theme='white'，含 auto 的浅色解析）：纯白底
-// - 深色（data-theme='dark'，含 auto 的深色解析）：纯黑底
+// Login palette: one flat page color on both halves, following the app theme (html[data-theme]).
+// - Light (default, no data-theme; also auto on light systems): amber page, cobalt accent
+// - White (data-theme='white'): plain white page
+// - Dark (data-theme='dark'; also auto on dark systems): near-black page, amber accent
 //
-// 组件只消费 --login-* 变量；同时覆盖少量主题 token，让共享组件（复选框等）自动跟随。
-// 色值对比度见 tests/loginPalette.test.ts。
+// Components only read --login-* variables; a few shared theme tokens are overridden so
+// shared components (checkboxes, etc.) follow along. Contrast is checked in
+// tests/loginPalette.test.ts.
 
 @mixin login-tokens-light {
   color-scheme: light;
 
-  --login-bg: #faf9f5;
-  --login-dot-color: #1c1917;
-  --login-title: #1c1917;
+  --login-bg: #fbbf24;
+  --login-dot-color: #121212;
+  --login-title: #121212;
 
-  --login-text: #1c1917;
-  --login-text-muted: #57534e;
-  --login-text-faint: #8a847e;
+  --login-text: #121212;
+  --login-text-muted: #644f18;
+  --login-text-faint: #7a6020;
 
-  --login-field-bg: rgba(28, 25, 23, 0.025);
-  --login-field-bg-focus: #ffffff;
-  --login-readout-bg: rgba(28, 25, 23, 0.045);
-  --login-border: rgba(28, 25, 23, 0.12);
-  --login-border-hover: rgba(28, 25, 23, 0.24);
-  --login-focus-border: rgba(28, 25, 23, 0.55);
-  --login-focus-ring: rgba(28, 25, 23, 0.07);
-  --login-hover-bg: rgba(28, 25, 23, 0.06);
-  --login-outline: rgba(28, 25, 23, 0.5);
+  --login-field-bg: transparent;
+  --login-field-bg-focus: transparent;
+  --login-readout-bg: transparent;
+  --login-border: rgba(18, 18, 18, 0.25);
+  --login-border-hover: rgba(18, 18, 18, 0.5);
+  --login-focus-border: #1447e6;
+  --login-focus-ring: transparent;
+  --login-hover-bg: transparent;
+  --login-outline: #1447e6;
 
-  --login-submit-bg: #1c1917;
-  --login-submit-hover: #000000;
-  --login-submit-fg: #fafaf9;
+  --login-submit-bg: #121212;
+  --login-submit-hover: #121212;
+  --login-submit-fg: #fbbf24;
 
-  --login-error: #b3402f;
+  --login-error: #991b1b;
 
-  --login-dropdown-bg: #ffffff;
-  --login-dropdown-hover: rgba(28, 25, 23, 0.05);
-  --login-dropdown-active: rgba(28, 25, 23, 0.08);
-  --login-dropdown-border: rgba(28, 25, 23, 0.1);
-  --login-dropdown-shadow: 0 16px 36px rgba(28, 25, 23, 0.12);
+  --login-dropdown-bg: #fbbf24;
+  --login-dropdown-hover: transparent;
+  --login-dropdown-active: transparent;
+  --login-dropdown-border: rgba(18, 18, 18, 0.25);
+  --login-dropdown-shadow: none;
 
-  --login-loader-track: rgba(28, 25, 23, 0.1);
-  --login-loader-bar: #1c1917;
+  --login-loader-track: rgba(18, 18, 18, 0.25);
+  --login-loader-bar: #1447e6;
 
-  // 共享组件 token
+  // Shared component tokens
   --bg-secondary: var(--login-bg);
-  --bg-primary: #ffffff;
+  --bg-primary: var(--login-bg);
   --text-primary: var(--login-text);
   --text-secondary: var(--login-text-muted);
   --text-tertiary: var(--login-text-faint);
   --border-color: var(--login-border);
   --border-hover: var(--login-border-hover);
-  --primary-color: #1c1917;
-  --primary-hover: #000000;
-  --primary-active: #292524;
-  --primary-contrast: #ffffff;
+  --primary-color: #1447e6;
+  --primary-hover: #1447e6;
+  --primary-active: #1447e6;
+  --primary-contrast: #fbbf24;
   --shadow: none;
   --shadow-lg: var(--login-dropdown-shadow);
 }
@@ -61,55 +62,55 @@
 @mixin login-tokens-dark {
   color-scheme: dark;
 
-  --login-bg: #000000;
-  --login-dot-color: #e2e8f0;
+  --login-bg: #121212;
+  --login-dot-color: #ffb900;
   --login-title: #ffffff;
 
-  --login-text: #f5f5f4;
-  --login-text-muted: #a3a3a3;
-  --login-text-faint: #6b6b6b;
+  --login-text: #ffffff;
+  --login-text-muted: #a0a0a0;
+  --login-text-faint: #7a7a7a;
 
-  --login-field-bg: rgba(255, 255, 255, 0.03);
-  --login-field-bg-focus: rgba(255, 255, 255, 0.05);
-  --login-readout-bg: rgba(255, 255, 255, 0.045);
-  --login-border: rgba(255, 255, 255, 0.1);
-  --login-border-hover: rgba(255, 255, 255, 0.22);
-  --login-focus-border: rgba(255, 255, 255, 0.5);
-  --login-focus-ring: rgba(255, 255, 255, 0.06);
-  --login-hover-bg: rgba(255, 255, 255, 0.06);
-  --login-outline: rgba(255, 255, 255, 0.55);
+  --login-field-bg: transparent;
+  --login-field-bg-focus: transparent;
+  --login-readout-bg: transparent;
+  --login-border: rgba(255, 255, 255, 0.15);
+  --login-border-hover: rgba(255, 255, 255, 0.35);
+  --login-focus-border: #ffb900;
+  --login-focus-ring: transparent;
+  --login-hover-bg: transparent;
+  --login-outline: #ffb900;
 
-  --login-submit-bg: #f5f5f4;
-  --login-submit-hover: #ffffff;
-  --login-submit-fg: #0a0a0a;
+  --login-submit-bg: #ffb900;
+  --login-submit-hover: #ffb900;
+  --login-submit-fg: #121212;
 
-  --login-error: #f2a59a;
+  --login-error: #fca5a5;
 
-  --login-dropdown-bg: #111111;
-  --login-dropdown-hover: rgba(255, 255, 255, 0.07);
-  --login-dropdown-active: rgba(255, 255, 255, 0.1);
-  --login-dropdown-border: rgba(255, 255, 255, 0.1);
-  --login-dropdown-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+  --login-dropdown-bg: #121212;
+  --login-dropdown-hover: transparent;
+  --login-dropdown-active: transparent;
+  --login-dropdown-border: rgba(255, 255, 255, 0.15);
+  --login-dropdown-shadow: none;
 
-  --login-loader-track: rgba(255, 255, 255, 0.1);
-  --login-loader-bar: #f5f5f4;
+  --login-loader-track: rgba(255, 255, 255, 0.15);
+  --login-loader-bar: #ffb900;
 
   --bg-secondary: var(--login-bg);
-  --bg-primary: #0e0e0e;
+  --bg-primary: var(--login-bg);
   --text-primary: var(--login-text);
   --text-secondary: var(--login-text-muted);
   --text-tertiary: var(--login-text-faint);
   --border-color: var(--login-border);
   --border-hover: var(--login-border-hover);
-  --primary-color: #f5f5f4;
-  --primary-hover: #ffffff;
-  --primary-active: #e7e5e4;
-  --primary-contrast: #0a0a0a;
+  --primary-color: #ffb900;
+  --primary-hover: #ffb900;
+  --primary-active: #ffb900;
+  --primary-contrast: #121212;
   --shadow: none;
   --shadow-lg: var(--login-dropdown-shadow);
 }
 
-// 在 CSS Module 中使用：按 html[data-theme] 选择配色
+// Use inside a CSS Module: picks the palette from html[data-theme]
 @mixin login-palette {
   @include login-tokens-light;
 

@@ -2475,5 +2475,18 @@
     "remove_pattern": "Xóa quy tắc regex dòng {{row}}",
     "move_up": "Chuyển quy tắc regex dòng {{row}} lên",
     "move_down": "Chuyển quy tắc regex dòng {{row}} xuống"
+  },
+  "burn_rate": {
+    "title": "Mức tiêu thụ",
+    "description": "Hạn mức đã dùng trong từng khoảng thời gian. Làm mới để lấy dữ liệu mới nhất; không ước tính lịch sử hay tốc độ theo giờ.",
+    "accounts": "Tài khoản đăng ký",
+    "load": "Làm mới tài khoản để tải mức tiêu thụ hạn mức.",
+    "unavailable": "Tài khoản không cung cấp mức tiêu thụ hạn mức.",
+    "unknown": "Chưa rõ mức tiêu thụ",
+    "consumed": "Đã dùng {{percent}}%",
+    "resets": "Đặt lại",
+    "reset_unknown": "Không có thời gian đặt lại",
+    "view": "Chế độ xem hạn mức",
+    "overview": "Tổng quan"
   }
 }

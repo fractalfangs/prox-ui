@@ -2490,5 +2490,18 @@
     "remove_pattern": "刪除第 {{row}} 列正規規則",
     "move_up": "上移第 {{row}} 列正規規則",
     "move_down": "下移第 {{row}} 列正規規則"
+  },
+  "burn_rate": {
+    "title": "額度消耗",
+    "description": "各用量視窗內已消耗的額度。重新整理以取得最新快照；不估算歷史用量或每小時消耗率。",
+    "accounts": "訂閱帳戶",
+    "load": "請重新整理此帳戶以載入額度消耗。",
+    "unavailable": "此帳戶未提供額度消耗資料。",
+    "unknown": "消耗未知",
+    "consumed": "已消耗 {{percent}}%",
+    "resets": "重設時間",
+    "reset_unknown": "重設時間不可用",
+    "view": "額度檢視",
+    "overview": "總覽"
   }
 }
