@@ -2572,5 +2572,18 @@
     "remove_pattern": "{{row}}행 정규식 규칙 삭제",
     "move_up": "{{row}}행 정규식 규칙 위로 이동",
     "move_down": "{{row}}행 정규식 규칙 아래로 이동"
+  },
+  "burn_rate": {
+    "title": "할당량 소모",
+    "description": "각 사용 기간에 소모한 할당량입니다. 새로고침으로 최신 정보를 확인하세요. 사용 이력이나 시간당 소모율은 추정하지 않습니다.",
+    "accounts": "구독 계정",
+    "load": "계정을 새로고침하여 할당량 소모를 불러오세요.",
+    "unavailable": "이 계정은 할당량 소모 정보를 제공하지 않습니다.",
+    "unknown": "소모량 알 수 없음",
+    "consumed": "{{percent}}% 소모",
+    "resets": "초기화",
+    "reset_unknown": "초기화 시간 없음",
+    "view": "할당량 보기",
+    "overview": "개요"
   }
 }

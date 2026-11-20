@@ -2572,5 +2572,18 @@
     "remove_pattern": "{{row}}. regex satırını sil",
     "move_up": "{{row}}. regex satırını yukarı taşı",
     "move_down": "{{row}}. regex satırını aşağı taşı"
+  },
+  "burn_rate": {
+    "title": "Kota tüketimi",
+    "description": "Bildirilen her dönemde tüketilen kota. Son durumu almak için yenileyin; geçmiş kullanım veya saatlik hız tahmin edilmez.",
+    "accounts": "Abonelik hesapları",
+    "load": "Kota tüketimini yüklemek için bu hesabı yenileyin.",
+    "unavailable": "Bu hesap kota tüketimini bildirmiyor.",
+    "unknown": "Tüketim bilinmiyor",
+    "consumed": "%{{percent}} tüketildi",
+    "resets": "Sıfırlanma",
+    "reset_unknown": "Sıfırlanma zamanı bilinmiyor",
+    "view": "Kota görünümü",
+    "overview": "Genel bakış"
   }
 }

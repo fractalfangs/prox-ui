@@ -63,7 +63,7 @@
   border: 0;
   border-radius: $radius-full;
   padding: 9px 16px;
-  background: var(--text-primary);
+  background: var(--primary-color);
   color: var(--bg-secondary);
   font-size: 13px;
   font-weight: 600;
@@ -122,7 +122,7 @@
 
 @media (hover: hover) and (pointer: fine) {
   .savePill:hover:not(:disabled) {
-    background: color-mix(in srgb, var(--text-primary) 86%, var(--bg-secondary));
+    background: var(--primary-color);
     box-shadow: 0 12px 26px color-mix(in srgb, var(--text-primary) 22%, transparent);
   }
 

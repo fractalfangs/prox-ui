@@ -442,7 +442,7 @@ $site-radius: 12px;
   height: 30px;
   border-radius: 50%;
   background: #{$sponsor-blue};
-  color: #fff;
+  color: var(--primary-contrast);
   box-shadow: 0 8px 18px -10px sponsor-tint(90%);
   transition: background-color var(--dur-hover, 200ms) var(--ease-out-strong, ease-out);
 }
@@ -532,4 +532,10 @@ $site-radius: 12px;
   .signUp:active {
     transform: none;
   }
+}
+
+/* Flat theme: the glow field and light rim are decorative; hide them. */
+.field,
+.rim {
+  display: none;
 }

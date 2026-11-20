@@ -360,7 +360,7 @@
 }
 
 .pillProminent {
-  background: var(--text-primary);
+  background: var(--primary-color);
   color: var(--bg-primary);
 }
 
@@ -390,7 +390,7 @@
   }
 
   .pillProminent:hover:not(:disabled) {
-    background: color-mix(in srgb, var(--text-primary) 86%, var(--bg-primary));
+    background: var(--primary-color);
   }
 }
 

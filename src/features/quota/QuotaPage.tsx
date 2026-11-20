@@ -28,6 +28,7 @@ import { getQuotaCacheKey } from '@/utils/quota/identity';
 import { ProviderTabs } from '@/features/authFiles/components/ProviderTabs';
 import { QuotaHeader } from './components/QuotaHeader';
 import { QuotaCard } from './components/QuotaCard';
+import { BurnRate } from './components/BurnRate';
 import { QuotaTimeline } from './components/QuotaTimeline';
 import {
   CARD_ENTRANCE_BUDGET_MS,
@@ -77,6 +78,7 @@ export function QuotaPage() {
   const connectionStatus = useAuthStore((state) => state.connectionStatus);
   const resolvedTheme: ResolvedTheme = useThemeStore((state) => state.resolvedTheme);
 
+  const [view, setView] = useState<'overview' | 'burn'>('overview');
   const [files, setFiles] = useState<AuthFileItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -322,13 +324,24 @@ export function QuotaPage() {
         disableControls
       )
     ) {
-      void loadQuota(pageItems);
+      void loadQuota(view === 'burn' ? entries : pageItems);
     }
-  }, [disableControls, error, filesGeneration, loading, loadQuota, pageItems, sessionGeneration]);
+  }, [
+    disableControls,
+    entries,
+    error,
+    filesGeneration,
+    loading,
+    loadQuota,
+    pageItems,
+    sessionGeneration,
+    view,
+  ]);
 
   useDevinQuotaAutoLoad(
     pageItems,
-    disableControls ||
+    view === 'burn' ||
+      disableControls ||
       loading ||
       batchLoading ||
       Boolean(error) ||
@@ -396,7 +409,48 @@ export function QuotaPage() {
         onRefreshAll={handleRefreshAll}
       />
 
-      <section className={styles.workbench}>
+      <div role="group" aria-label={t('burn_rate.view')} className={styles.viewControls}>
+        <Button
+          variant={view === 'overview' ? 'primary' : 'secondary'}
+          aria-pressed={view === 'overview'}
+          onClick={() => setView('overview')}
+        >
+          {t('burn_rate.overview')}
+        </Button>
+        <Button
+          variant={view === 'burn' ? 'primary' : 'secondary'}
+          aria-pressed={view === 'burn'}
+          onClick={() => setView('burn')}
+        >
+          {t('burn_rate.title')}
+        </Button>
+      </div>
+      <div hidden={view !== 'burn'}>
+        {loading && (
+          <div role="status">
+            {t('common.loading')}
+            <Skeleton height={168} rounded={14} />
+          </div>
+        )}
+        {error && (
+          <div className={styles.errorBanner} role="alert">
+            {error}
+          </div>
+        )}
+        <div hidden={loading || Boolean(error)}>
+          <BurnRate
+            key={sessionGeneration}
+            entries={entries}
+            quotaFor={getQuota}
+            canRefresh={canUseActions}
+            onRefresh={(entry) => void refreshQuota(entry.file, QUOTA_ADAPTERS[entry.type])}
+          />
+        </div>
+      </div>
+      <section
+        className={styles.workbench}
+        style={{ display: view === 'burn' ? 'none' : undefined }}
+      >
         {/* 提供商导航与搜索工具栏分层，避免不同控件争夺视觉焦点。 */}
         <div className={styles.tabsRow} data-reveal>
           <ProviderTabs

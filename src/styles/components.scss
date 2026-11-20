@@ -1,61 +1,51 @@
-@use 'sass:color';
 @use './variables.scss' as *;
 
+// Buttons read as text links: accent colored, no fill, no border, underline on hover.
+// Primary and danger use an inverted badge (colored fill, page-colored text, square).
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: $spacing-sm;
-  border: 1px solid transparent;
-  border-radius: $radius-md;
-  padding: 10px 14px;
-  font-weight: 600;
+  border: 0;
+  border-radius: 0;
+  padding: 2px 4px;
+  font-weight: 500;
+  text-transform: lowercase;
+  text-decoration: none;
+  text-underline-offset: 4px;
   cursor: pointer;
-  transition: all $transition-fast;
-  background-color: var(--bg-secondary);
-  color: var(--text-primary);
+  transition:
+    color $transition-fast,
+    background-color $transition-fast;
+  background: none;
+  color: var(--primary-color);
+
+  &:hover:not(:disabled),
+  &:focus-visible {
+    text-decoration: underline;
+  }
 
   &.btn-primary {
+    padding: 2px 8px;
     background-color: var(--primary-color);
-    color: var(--primary-contrast, #fff);
-    border-color: var(--primary-color);
-
-    &:hover {
-      background-color: var(--primary-hover);
-      border-color: var(--primary-hover);
-    }
+    color: var(--primary-contrast);
   }
 
   &.btn-secondary {
-    background-color: var(--bg-tertiary);
-    border-color: var(--border-color);
-    color: var(--text-primary);
-
-    &:hover {
-      background-color: var(--bg-hover, var(--bg-tertiary));
-      border-color: var(--border-hover);
-    }
+    background: none;
+    color: var(--primary-color);
   }
 
   &.btn-ghost {
-    background: transparent;
-    border-color: transparent;
-    color: var(--text-secondary);
-
-    &:hover {
-      color: var(--text-primary);
-      background: var(--bg-tertiary);
-    }
+    background: none;
+    color: var(--primary-color);
   }
 
   &.btn-danger {
-    background-color: $error-color;
-    border-color: $error-color;
-    color: #fff;
-
-    &:hover {
-      background-color: color.adjust($error-color, $lightness: -5%);
-    }
+    padding: 2px 8px;
+    background-color: var(--error-color);
+    color: var(--page-bg);
   }
 
   &.btn-full {
@@ -63,24 +53,19 @@
   }
 
   &.btn-sm {
-    padding: 8px 10px;
+    padding-top: 0;
+    padding-bottom: 0;
     font-size: 14px;
   }
 
+  &.btn-primary.btn-sm,
+  &.btn-danger.btn-sm {
+    padding: 0 6px;
+  }
+
   &:disabled {
-    opacity: 0.6;
+    opacity: 0.45;
     cursor: not-allowed;
-  }
-}
-
-[data-theme='dark'] {
-  .btn {
-    color: #fff;
-  }
-
-  .btn.btn-secondary,
-  .btn.btn-ghost {
-    color: #fff;
   }
 }
 

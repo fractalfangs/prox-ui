@@ -2572,5 +2572,18 @@
     "remove_pattern": "Remove regex row {{row}}",
     "move_up": "Move regex row {{row}} up",
     "move_down": "Move regex row {{row}} down"
+  },
+  "burn_rate": {
+    "title": "Burn Rate",
+    "description": "Consumed quota in each reported window. Refresh to get the latest snapshot; no usage history or hourly rate is estimated.",
+    "accounts": "Subscription accounts",
+    "load": "Refresh this account to load its quota consumption.",
+    "unavailable": "This account does not report quota consumption.",
+    "unknown": "Consumption unknown",
+    "consumed": "{{percent}}% consumed",
+    "resets": "Resets",
+    "reset_unknown": "Reset time unavailable",
+    "view": "Quota view",
+    "overview": "Overview"
   }
 }
