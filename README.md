@@ -2,7 +2,7 @@
 
 <img src="./logo.jpg" alt="CLI Proxy API" width="144">
 
-# CLI Proxy API Management Center
+# Styx Router
 
 **Your proxy, at a glance. Your configuration, in control.**
 

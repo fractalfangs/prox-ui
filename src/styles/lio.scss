@@ -2,8 +2,8 @@
  * lio.cat inspired presentation layer.
  *
  * Loaded last from global.scss. Tokens live in themes.scss; this file only
- * holds the cross-cutting rules that tokens cannot express: the single-column
- * shell with a text-link navigation row, flat surfaces, lowercase chrome,
+ * holds the cross-cutting rules that tokens cannot express: the sidebar shell,
+ * flat surfaces, lowercase chrome,
  * link and table treatments. Feature modules keep their own layout.
  *
  * CSS module class names follow `[name]__[local]___[hash]` (vite.config.ts),
@@ -154,80 +154,60 @@ a {
 }
 
 // ---------------------------------------------------------------------------
-// Shell: one centered column with brand + actions, a wrapping nav row, content.
+// Shell: persistent sidebar with a centered reading column and flat controls.
 // ---------------------------------------------------------------------------
 
 .app-shell {
-  display: grid !important;
-  grid-template-columns: minmax($gutter, 1fr) minmax(0, $column-width) minmax($gutter, 1fr);
-  grid-template-rows: auto auto minmax(0, 1fr);
-  height: 100vh !important;
-  min-height: 0 !important;
-  overflow: hidden !important;
+  min-height: 0;
   background: var(--page-bg);
 
   @supports (height: 100dvh) {
-    height: 100dvh !important;
+    height: 100dvh;
   }
 }
 
-.app-shell .main-body,
+.top-gradient-blur {
+  display: none;
+}
+
 .app-shell .sidebar {
-  display: contents !important;
+  background: var(--page-bg);
+  border-right-color: var(--rule-color);
 }
 
-.top-gradient-blur,
-.sidebar-backdrop,
-.nav-tooltip,
-.main-header .sidebar-toggle-floating,
-.main-header .mobile-sidebar-actions,
-.nav-group-label,
-.nav-group-divider,
-.nav-drawer-caret,
-.sidebar-brand-logo {
-  display: none !important;
-}
-
-// Brand on the left of the top row.
 .app-shell .sidebar-header {
-  grid-column: 2;
-  grid-row: 1;
-  align-self: center;
-  justify-self: start;
-  min-height: 0;
-  margin: 0;
-  padding: 24px 0 8px;
-  border: 0;
+  min-height: 44px;
+  padding: 8px 10px 16px;
+  border-bottom-color: var(--rule-color);
 }
 
 .app-shell .sidebar-brand {
   padding: 0;
-  gap: 0;
 }
 
 .app-shell .sidebar-brand-title {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--page-fg);
 }
 
-// Header actions on the right of the top row.
+.app-shell .sidebar-brand-logo {
+  display: none;
+}
+
+.app-shell .sidebar.collapsed .sidebar-brand-logo {
+  display: block;
+}
+
 .app-shell .main-header {
-  grid-column: 2;
-  grid-row: 1;
-  align-self: center;
-  justify-self: end;
-  position: relative !important;
-  inset: auto !important;
-  height: auto !important;
-  padding: 24px 0 8px;
-  pointer-events: auto;
-  background: none;
-  z-index: $z-dropdown + 1;
+  .sidebar-toggle-floating {
+    background: var(--page-bg);
+    color: var(--accent-color);
+    border-color: var(--rule-color);
+  }
 
   .header-actions {
-    position: static !important;
     padding: 0 !important;
     gap: 4px !important;
     max-width: none !important;
@@ -286,87 +266,73 @@ a {
   }
 }
 
-// Navigation: a wrapping row of plain lowercase text links.
+// Navigation retains the theme's plain links in vertically stacked groups.
 .app-shell .nav-section {
-  grid-column: 2;
-  grid-row: 2;
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.25rem 1rem !important;
-  padding: 0.5rem 0 1rem;
-  border-bottom: 1px solid var(--rule-color);
+  gap: 24px;
+  padding: 12px 0;
 }
 
-.app-shell .nav-group,
-.app-shell .nav-drawer,
-.app-shell .nav-sub-list {
-  display: contents !important;
+.app-shell .nav-group-label {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 400;
 }
 
 .app-shell .nav-item {
-  display: inline-flex !important;
-  align-items: baseline;
-  gap: 0.35em;
-  width: auto !important;
-  padding: 0 !important;
-  border: 0 !important;
-  margin: 0 !important;
-  background: none !important;
-  color: var(--accent-color) !important;
-  font-size: 1.125rem !important;
-  font-weight: 400 !important;
-  line-height: 1.6;
+  min-height: 40px;
+  padding: 8px 10px;
+  border: 0;
+  background: none;
+  color: var(--accent-color);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
   text-decoration: none;
   text-underline-offset: 4px;
-  transform: none !important;
-
-  &::before,
-  &::after {
-    display: none !important;
-  }
+  transform: none;
 
   &:hover,
   &:focus-visible,
   &.active {
+    background: none;
+    color: var(--accent-color);
     text-decoration: underline;
+    transform: none;
   }
 
-  .nav-icon {
-    display: none;
+  .nav-icon,
+  &:hover .nav-icon,
+  &.active .nav-icon {
+    color: var(--accent-color);
   }
 
   .nav-label {
-    overflow: visible;
+    line-height: 1.5;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
-  // Counts read as plain muted text next to the label.
   .nav-badge {
-    position: static !important;
-    min-width: 0 !important;
-    height: auto !important;
-    padding: 0 !important;
-    border: 0 !important;
-    background: none !important;
-    color: var(--text-muted) !important;
-    font-size: 0.8em !important;
-    font-weight: 400 !important;
+    background: none;
+    color: var(--text-muted);
+    font-size: 0.8em;
+    font-weight: 400;
   }
 }
 
-// The sidebar's collapsed state hides labels, so fall back to the icons.
-.app-shell .sidebar.collapsed .nav-item .nav-icon {
-  display: inline-flex;
-  color: var(--accent-color);
+.nav-tooltip {
+  background: var(--page-bg);
+  color: var(--page-fg);
+  border-color: var(--rule-color);
+
+  .nav-tooltip-meta {
+    color: var(--text-muted);
+  }
 }
 
-// Content scrolls below the top rows; the page column stays centered inside it.
+// Content scrolls independently of the sidebar; keep the reading column centered.
 .app-shell .content {
-  grid-column: 1 / -1;
-  grid-row: 3;
-  height: auto !important;
-  min-height: 0 !important;
+  min-height: 0;
   overflow-y: auto;
   scrollbar-gutter: auto;
 
@@ -380,11 +346,11 @@ a {
   width: 100%;
   max-width: calc(#{$column-width} + #{$gutter * 2});
   margin: 0 auto;
-  padding: 2rem $gutter 3rem !important;
+  padding: var(--header-height) $gutter 3rem !important;
 
   &.main-content-logs {
     max-width: none;
-    padding: 1rem $gutter !important;
+    padding: var(--header-height) $gutter 1rem !important;
   }
 
   &.main-content-plugin-resource {
@@ -398,7 +364,8 @@ a {
 // ---------------------------------------------------------------------------
 
 .card,
-.main-content :is(
+.main-content
+  :is(
     [class*='__card___'],
     [class*='Card___'],
     [class*='__panel___'],
@@ -612,9 +579,45 @@ tbody tr[data-selected='true'] > td {
 // ---------------------------------------------------------------------------
 
 @media (max-width: $breakpoint-mobile) {
-  .app-shell .sidebar-header,
+  .app-shell {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .app-shell .main-body {
+    min-height: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .app-shell .sidebar-header {
+    padding-top: 56px;
+  }
+
+  .app-shell .sidebar.open {
+    .nav-group-label {
+      display: block;
+    }
+
+    .nav-drawer-caret {
+      display: inline-flex;
+    }
+  }
+
   .app-shell .main-header {
-    padding-top: 16px;
+    background: var(--page-bg);
+
+    .mobile-sidebar-actions {
+      padding: 0;
+      border: 0;
+      background: var(--page-bg);
+    }
+  }
+
+  .app-shell .content {
+    min-height: 0;
+    height: 100%;
+    overflow-y: auto;
   }
 
   .app-shell .sidebar-brand-title {
@@ -632,10 +635,10 @@ tbody tr[data-selected='true'] > td {
   }
 
   .app-shell .main-content {
-    padding: 1.25rem $gutter 2rem !important;
+    padding: var(--header-height) $gutter 2rem !important;
 
     &.main-content-logs {
-      padding: 0.75rem 12px !important;
+      padding: var(--header-height) 12px 0.75rem !important;
     }
   }
 
@@ -645,10 +648,5 @@ tbody tr[data-selected='true'] > td {
     align-items: flex-start;
     padding-left: 0;
     padding-right: 0;
-  }
-
-  // The drawer sidebar is gone on phones too; nothing slides in.
-  .app-shell .sidebar {
-    transform: none !important;
   }
 }

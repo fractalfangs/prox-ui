@@ -95,7 +95,13 @@ describe('LoginForm', () => {
 describe('login copy', () => {
   test('every locale has the URL actions, key toggle labels and colon-free field labels', async () => {
     for (const language of LANGUAGE_ORDER) {
-      const { login } = await Bun.file(`src/i18n/locales/${language}.json`).json();
+      const { login, title, splash, system_info } = await Bun.file(
+        `src/i18n/locales/${language}.json`
+      ).json();
+      expect(title.login).toBe('Styx Router');
+      expect(title.abbr).toBe('Styx Router');
+      expect(splash.title).toBe('Styx Router');
+      expect(system_info.about_title).toBe('Styx Router');
       expect(login.connection_edit.length).toBeGreaterThan(0);
       expect(login.show_key.length).toBeGreaterThan(0);
       expect(login.hide_key.length).toBeGreaterThan(0);
@@ -109,7 +115,7 @@ describe('login copy', () => {
 describe('login brand mark', () => {
   test('shows the full English product name in every language', async () => {
     const source = await Bun.file('src/pages/LoginPage.tsx').text();
-    expect(source).toContain("LOGIN_BRAND_NAME = 'CLI Proxy API Management Center'");
+    expect(source).toContain("LOGIN_BRAND_NAME = 'Styx Router'");
     expect(source).toMatch(/className=\{styles\.brandName\}[^>]*>\s*\{LOGIN_BRAND_NAME\}/);
   });
 });
