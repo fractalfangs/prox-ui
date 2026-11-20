@@ -2462,5 +2462,18 @@
     "remove_pattern": "删除第 {{row}} 行正则规则",
     "move_up": "上移第 {{row}} 行正则规则",
     "move_down": "下移第 {{row}} 行正则规则"
+  },
+  "burn_rate": {
+    "title": "额度消耗",
+    "description": "各用量窗口内已消耗的额度。刷新以获取最新快照；不估算历史用量或每小时消耗率。",
+    "accounts": "订阅账户",
+    "load": "请刷新此账户以加载额度消耗。",
+    "unavailable": "此账户未提供额度消耗数据。",
+    "unknown": "消耗未知",
+    "consumed": "已消耗 {{percent}}%",
+    "resets": "重置时间",
+    "reset_unknown": "重置时间不可用",
+    "view": "额度视图",
+    "overview": "概览"
   }
 }
