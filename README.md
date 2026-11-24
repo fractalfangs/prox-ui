@@ -1,12 +1,12 @@
 <div align="center">
 
-<img src="./logo.jpg" alt="CLI Proxy API" width="144">
+<img src="./logo.jpg" alt="Styx Proxy" width="144">
 
-# Styx Router
+# Styx Proxy
 
 **Your proxy, at a glance. Your configuration, in control.**
 
-A lightweight Web UI for CLI Proxy API.<br>
+A lightweight Web UI for Styx Proxy.<br>
 Manage providers, credentials, quotas, and logs — from a single HTML file.
 
 [![Backend: v8](https://img.shields.io/badge/Backend-v8-5865F2?style=flat-square)](https://github.com/router-for-me/CLIProxyAPI)
@@ -32,13 +32,13 @@ From everyday configuration to troubleshooting, keep the essentials close at han
 **Single-file deployment** · **Responsive layout** · **Four UI languages**
 
 > [!IMPORTANT]
-> Requires **CLI Proxy API ≥ 8.0.0**; the latest v8 release is recommended. This repository is the management UI, not the proxy — it does not forward traffic. It uses the **v8 Management API** (`/v8/management`) and v8 configuration layout, with no v0 fallback. Plugin resources and custom extensions retain their backend-declared paths.
+> Requires **Styx Proxy ≥ 8.0.0**; the latest v8 release is recommended. This repository is the management UI, not the proxy — it does not forward traffic. It uses the **v8 Management API** (`/v8/management`) and v8 configuration layout, with no v0 fallback. Plugin resources and custom extensions retain their backend-declared paths.
 
 ## Quick start
 
-The UI is bundled with [CLI Proxy API](https://github.com/router-for-me/CLIProxyAPI). No separate frontend deployment is needed for the standard setup.
+The UI is bundled with [Styx Proxy](https://github.com/router-for-me/CLIProxyAPI). No separate frontend deployment is needed for the standard setup.
 
-1. Start your CLI Proxy API service.
+1. Start your Styx Proxy service.
 2. Open `http://<host>:<api_port>/management.html`.
 3. Enter your **management key** and connect.
 
@@ -157,6 +157,6 @@ Use a trusted device or dedicated browser profile. Enable remote management only
 
 <div align="center">
 
-[CLI Proxy API](https://github.com/router-for-me/CLIProxyAPI) · [Report an issue](https://github.com/router-for-me/Cli-Proxy-API-Management-Center/issues) · [MIT License](LICENSE)
+[Styx Proxy](https://github.com/router-for-me/CLIProxyAPI) · [Report an issue](https://github.com/router-for-me/Cli-Proxy-API-Management-Center/issues) · [MIT License](LICENSE)
 
 </div>

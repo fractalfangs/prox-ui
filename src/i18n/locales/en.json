@@ -40,7 +40,7 @@
     "alias": "Alias",
     "failure": "Failure",
     "unknown_error": "Unknown error",
-    "quota_update_required": "Please update the CPA version or check for updates",
+    "quota_update_required": "Please update the Styx Proxy version or check for updates",
     "quota_check_credential": "Please check the credential status",
     "copy": "Copy",
     "expand": "Expand",
@@ -59,11 +59,11 @@
     "unsaved_changes_message": "You have unsaved changes. Leaving now will discard them. Do you want to leave?"
   },
   "title": {
-    "login": "Styx Router",
-    "abbr": "Styx Router"
+    "login": "Styx Proxy",
+    "abbr": "Styx Proxy"
   },
   "splash": {
-    "title": "Styx Router",
+    "title": "Styx Proxy",
     "subtitle": "Management Center"
   },
   "login": {
@@ -88,8 +88,8 @@
     "error_timeout": "Connection timed out, server not responding",
     "error_unauthorized": "Authentication failed, management key is missing or invalid",
     "error_forbidden": "Access denied, remote management is disabled, the management key is not configured, or this IP is temporarily banned",
-    "error_not_found": "v8 Management API not found. Check the server address and upgrade CLIProxyAPI to v8 or later; v0 is not supported.",
-    "error_legacy_backend": "This backend accepts v0 Management API but does not provide v8. Upgrade CLIProxyAPI to v8 or later to use this management page.",
+    "error_not_found": "v8 Management API not found. Check the server address and upgrade Styx Proxy to v8 or later; v0 is not supported.",
+    "error_legacy_backend": "This backend accepts v0 Management API but does not provide v8. Upgrade Styx Proxy to v8 or later to use this management page.",
     "error_server": "Backend failed while handling the management request, check the server logs",
     "error_cors": "Cross-origin request blocked, please check server configuration",
     "error_ssl": "SSL/TLS certificate verification failed"
@@ -353,7 +353,7 @@
     "models_empty": "No available models for this credential",
     "models_empty_desc": "This credential may not be loaded by the server yet, or no models are bound to it.",
     "models_unsupported": "This feature is not supported in the current version",
-    "models_unsupported_desc": "Please update CLI Proxy API to the latest version and try again",
+    "models_unsupported_desc": "Please update Styx Proxy to the latest version and try again",
     "models_excluded_badge": "Disabled",
     "models_excluded_hint": "This OAuth model is disabled",
     "status_toggle_label": "Enabled",
@@ -730,9 +730,9 @@
     "save_failed": "Failed to update model disablement",
     "no_models": "No disabled models configured",
     "list_empty_all": "No disabled models yet. Pick a provider to get started.",
-    "upgrade_required": "Current CPA version does not support OAuth model disablement. Please upgrade.",
-    "upgrade_required_title": "Please upgrade CLI Proxy API",
-    "upgrade_required_desc": "The current server version does not support fetching OAuth model disablement. Please upgrade to the latest CPA (CLI Proxy API) version and try again."
+    "upgrade_required": "Current Styx Proxy version does not support OAuth model disablement. Please upgrade.",
+    "upgrade_required_title": "Please upgrade Styx Proxy",
+    "upgrade_required_desc": "The current server version does not support fetching OAuth model disablement. Please upgrade to the latest Styx Proxy version and try again."
   },
   "excluded_models": {
     "trigger_summary": "{{excluded}} excluded · {{available}} available",
@@ -771,7 +771,7 @@
     "remove_mapping": "Delete alias mapping {{number}}",
     "title": "OAuth Model Aliases",
     "model_source_loading": "Loading models...",
-    "model_source_unsupported": "The current CPA version does not support fetching model lists (manual input still works).",
+    "model_source_unsupported": "The current Styx Proxy version does not support fetching model lists (manual input still works).",
     "model_source_loaded": "{{count}} models loaded. Use the dropdown in 'Source model name', or type custom values. Saving an empty list removes that provider. Enable 'Keep original' to keep the original name while adding the alias.",
     "alias_name_placeholder": "Source model name",
     "alias_placeholder": "Alias (required)",
@@ -810,9 +810,9 @@
     "diagram_tap_hint": "On touch devices: tap a source model, then tap an alias to link.",
     "view_mode_diagram": "Diagram",
     "view_mode_list": "List",
-    "upgrade_required": "This feature requires a newer CLI Proxy API (CPA) version. Please upgrade.",
-    "upgrade_required_title": "Please upgrade CLI Proxy API",
-    "upgrade_required_desc": "The current server does not support the OAuth model aliases API. Please upgrade to the latest CLI Proxy API (CPA) version."
+    "upgrade_required": "This feature requires a newer Styx Proxy version. Please upgrade.",
+    "upgrade_required_title": "Please upgrade Styx Proxy",
+    "upgrade_required_desc": "The current server does not support the OAuth model aliases API. Please upgrade to the latest Styx Proxy version."
   },
   "model_rules": {
     "section_label": "Model rules",
@@ -963,7 +963,7 @@
     "oauth_callback_required": "Please paste the full redirect URL first.",
     "oauth_callback_success": "Callback URL submitted. Continue waiting for authentication.",
     "oauth_callback_error": "Failed to submit callback URL:",
-    "oauth_callback_upgrade_hint": "Please update CLI Proxy API or check the connection.",
+    "oauth_callback_upgrade_hint": "Please update Styx Proxy or check the connection.",
     "oauth_callback_status_success": "Callback URL submitted, waiting for authentication...",
     "oauth_callback_status_error": "Callback URL submission failed:",
     "missing_state": "Unable to retrieve authentication state parameter",
@@ -1066,9 +1066,9 @@
     "request_log_download_success": "Request log downloaded successfully",
     "empty_title": "No Logs Available",
     "empty_desc": "When \"Enable logging to file\" is enabled, logs will be displayed here",
-    "cpa_file_logging_required": "The connected runtime is CPA. Log viewing requires logging to file to be enabled first.",
+    "cpa_file_logging_required": "The connected runtime is Styx Proxy. Log viewing requires logging to file to be enabled first.",
     "cpa_file_logging_required_title": "File logging is required",
-    "cpa_file_logging_required_desc": "CPA reads this log view from local log files. Enable logging-to-file in the config, then refresh.",
+    "cpa_file_logging_required_desc": "Styx Proxy reads this log view from local log files. Enable logging-to-file in the config, then refresh.",
     "file_logging_required": "This logs endpoint requires logging to file before file logs can be read.",
     "file_logging_required_title": "File logging is required",
     "file_logging_required_desc": "This logs endpoint reads local log files. Enable logging-to-file in the config, then refresh.",
@@ -1389,7 +1389,7 @@
           "plugin_store_sources": "Third-party Plugin Sources",
           "plugin_store_sources_desc": "Append plugin-store registry sources; the built-in official source is always kept",
           "plugin_store_sources_label": "Plugin source registry URL (plugins.store-sources)",
-          "plugin_store_sources_placeholder": "https://example.com/cliproxy-plugins/registry.json",
+          "plugin_store_sources_placeholder": "https://example.com/styx-proxy-plugins/registry.json",
           "plugin_store_auth": "Plugin Store Auth Rules",
           "plugin_store_auth_hint": "Enter environment variable names only, not actual tokens. The backend reads the values from its runtime environment.",
           "store_auth_empty": "No auth rules are configured. Public plugin sources do not need one.",
@@ -1862,7 +1862,7 @@
     "description_show_more": "Show more",
     "description_show_less": "Show less",
     "source_name": "Source: {{source}}",
-    "cli_proxy_api_source": "CLIProxyAPI source",
+    "cli_proxy_api_source": "Styx Proxy source",
     "refresh": "Refresh",
     "retry": "Retry",
     "load_failed": "Failed to load the plugin store",
@@ -1949,7 +1949,7 @@
     "models_catalog_refresh_success": "Model catalog updated.",
     "models_catalog_refresh_failed": "Model catalog update failed",
     "title": "Management Center Info",
-    "about_title": "Styx Router",
+    "about_title": "Styx Proxy",
     "models_title": "Available Models",
     "models_desc": "Click “Refresh list” to see the latest available models. If a new model is missing, try “Update model catalog”.",
     "models_loading": "Loading available models...",
@@ -2018,7 +2018,7 @@
     "auth_files_count": "Authentication files: {{count}}"
   },
   "footer": {
-    "api_version": "CLI Proxy API Version",
+    "api_version": "Styx Proxy Version",
     "build_date": "Build Time",
     "version": "Management UI Version"
   },

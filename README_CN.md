@@ -1,12 +1,12 @@
 <div align="center">
 
-<img src="./logo.jpg" alt="CLI Proxy API" width="144">
+<img src="./logo.jpg" alt="Styx Proxy" width="144">
 
-# Styx Router
+# Styx Proxy
 
 **运行状态，一目了然。服务配置，尽在掌握。**
 
-为 CLI Proxy API 打造的轻量 Web 管理界面。<br>
+为 Styx Proxy 打造的轻量 Web 管理界面。<br>
 提供商、凭据、配额与日志，一个 HTML 文件即可管理。
 
 [![后端：v8](https://img.shields.io/badge/Backend-v8-5865F2?style=flat-square)](https://github.com/router-for-me/CLIProxyAPI)
@@ -32,13 +32,13 @@
 **单文件部署** · **响应式布局** · **四种界面语言**
 
 > [!IMPORTANT]
-> 需要 **CLI Proxy API ≥ 8.0.0**，推荐使用最新 v8 版本。本仓库仅包含管理界面，**不是代理本体，不参与流量转发**。仅使用 **v8 Management API**（`/v8/management`）与 v8 配置结构，不提供 v0 回退；插件资源与自定义扩展保留后端声明的路径。
+> 需要 **Styx Proxy ≥ 8.0.0**，推荐使用最新 v8 版本。本仓库仅包含管理界面，**不是代理本体，不参与流量转发**。仅使用 **v8 Management API**（`/v8/management`）与 v8 配置结构，不提供 v0 回退；插件资源与自定义扩展保留后端声明的路径。
 
 ## 快速开始
 
-[CLI Proxy API](https://github.com/router-for-me/CLIProxyAPI) 已内置 Web UI，常规使用无需单独部署前端。
+[Styx Proxy](https://github.com/router-for-me/CLIProxyAPI) 已内置 Web UI，常规使用无需单独部署前端。
 
-1. 启动 CLI Proxy API 服务。
+1. 启动 Styx Proxy 服务。
 2. 打开 `http://<host>:<api_port>/management.html`。
 3. 输入 **管理密钥** 并连接。
 
@@ -157,6 +157,6 @@ bun run dev
 
 <div align="center">
 
-[CLI Proxy API](https://github.com/router-for-me/CLIProxyAPI) · [反馈问题](https://github.com/router-for-me/Cli-Proxy-API-Management-Center/issues) · [MIT 许可证](LICENSE)
+[Styx Proxy](https://github.com/router-for-me/CLIProxyAPI) · [反馈问题](https://github.com/router-for-me/Cli-Proxy-API-Management-Center/issues) · [MIT 许可证](LICENSE)
 
 </div>

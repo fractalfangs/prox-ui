@@ -40,7 +40,7 @@
     "alias": "Takma Ad",
     "failure": "Başarısız",
     "unknown_error": "Bilinmeyen Hata",
-    "quota_update_required": "CPA Sürümünü Güncelle veya Güncellemeleri Kontrol Et",
+    "quota_update_required": "Styx Proxy Sürümünü Güncelle veya Güncellemeleri Kontrol Et",
     "quota_check_credential": "Kimlik Bilgisi Durumunu Kontrol Et",
     "copy": "Kopyala",
     "expand": "Genişlet",
@@ -59,11 +59,11 @@
     "unsaved_changes_message": "Kaydedilmemiş Değişiklikler Var. Şimdi Ayrılırsan Bunlar Silinir. Ayrılmak İstiyor Musun?"
   },
   "title": {
-    "login": "Styx Router",
-    "abbr": "Styx Router"
+    "login": "Styx Proxy",
+    "abbr": "Styx Proxy"
   },
   "splash": {
-    "title": "Styx Router",
+    "title": "Styx Proxy",
     "subtitle": "Yönetim Merkezi"
   },
   "login": {
@@ -88,8 +88,8 @@
     "error_timeout": "Bağlantı Zaman Aşımına Uğradı. Sunucu Yanıt Vermiyor",
     "error_unauthorized": "Kimlik Doğrulama Başarısız. Yönetim Anahtarı Eksik veya Geçersiz",
     "error_forbidden": "Erişim Reddedildi. Uzak Yönetim Kapalı, Yönetim Anahtarı Yapılandırılmamış veya Bu IP Geçici Olarak Yasaklı",
-    "error_not_found": "v8 Management API Bulunamadı. Sunucu Adresini Kontrol Et ve CLIProxyAPI Sürümünü v8 veya Sonrasına Yükselt. v0 Desteklenmiyor.",
-    "error_legacy_backend": "Bu Arka Uç v0 Management API Kabul Ediyor ama v8 Sunmuyor. Bu Yönetim Sayfasını Kullanmak için CLIProxyAPI Sürümünü v8 veya Sonrasına Yükselt.",
+    "error_not_found": "v8 Management API Bulunamadı. Sunucu Adresini Kontrol Et ve Styx Proxy Sürümünü v8 veya Sonrasına Yükselt. v0 Desteklenmiyor.",
+    "error_legacy_backend": "Bu Arka Uç v0 Management API Kabul Ediyor ama v8 Sunmuyor. Bu Yönetim Sayfasını Kullanmak için Styx Proxy Sürümünü v8 veya Sonrasına Yükselt.",
     "error_server": "Arka Uç Yönetim İsteğini İşlerken Başarısız Oldu. Sunucu Günlüklerini Kontrol Et",
     "error_cors": "Çapraz Kökenli İstek Engellendi. Sunucu Yapılandırmasını Kontrol Et",
     "error_ssl": "SSL/TLS Sertifika Doğrulaması Başarısız"
@@ -353,7 +353,7 @@
     "models_empty": "Bu Kimlik Bilgisi için Kullanılabilir Model Yok",
     "models_empty_desc": "Bu Kimlik Bilgisi Sunucu Tarafından Henüz Yüklenmemiş Olabilir veya Buna Bağlı Model Yoktur.",
     "models_unsupported": "Bu Özellik Geçerli Sürümde Desteklenmiyor",
-    "models_unsupported_desc": "CLIProxyAPI Sürümünü En Sona Güncelle ve Yeniden Dene",
+    "models_unsupported_desc": "Styx Proxy Sürümünü En Sona Güncelle ve Yeniden Dene",
     "models_excluded_badge": "Devre Dışı",
     "models_excluded_hint": "Bu OAuth Modeli Devre Dışı",
     "status_toggle_label": "Etkin",
@@ -730,9 +730,9 @@
     "save_failed": "Model Devre Dışı Bırakma Güncellenemedi",
     "no_models": "Yapılandırılmış Devre Dışı Model Yok",
     "list_empty_all": "Henüz Devre Dışı Model Yok. Başlamak için Bir Sağlayıcı Seç.",
-    "upgrade_required": "Geçerli CPA Sürümü OAuth Model Devre Dışı Bırakmayı Desteklemiyor. Lütfen Yükselt.",
-    "upgrade_required_title": "Lütfen CLIProxyAPI Sürümünü Yükselt",
-    "upgrade_required_desc": "Geçerli Sunucu Sürümü OAuth Model Devre Dışı Bırakmayı Getirmeyi Desteklemiyor. En Son CPA (CLIProxyAPI) Sürümüne Yükselt ve Yeniden Dene."
+    "upgrade_required": "Geçerli Styx Proxy Sürümü OAuth Model Devre Dışı Bırakmayı Desteklemiyor. Lütfen Yükselt.",
+    "upgrade_required_title": "Lütfen Styx Proxy Sürümünü Yükselt",
+    "upgrade_required_desc": "Geçerli Sunucu Sürümü OAuth Model Devre Dışı Bırakmayı Getirmeyi Desteklemiyor. En Son Styx Proxy Sürümüne Yükselt ve Yeniden Dene."
   },
   "excluded_models": {
     "trigger_summary": "{{excluded}} Hariç · {{available}} Kullanılabilir",
@@ -771,7 +771,7 @@
     "remove_mapping": "Takma Ad Eşlemesi {{number}} Sil",
     "title": "OAuth Model Takma Adları",
     "model_source_loading": "Modeller Yükleniyor...",
-    "model_source_unsupported": "Geçerli CPA Sürümü Model Listelerini Getirmeyi Desteklemiyor (Elle Giriş Yine Çalışır).",
+    "model_source_unsupported": "Geçerli Styx Proxy Sürümü Model Listelerini Getirmeyi Desteklemiyor (Elle Giriş Yine Çalışır).",
     "model_source_loaded": "{{count}} Model Yüklendi. 'Kaynak Model Adı' Açılır Listesini Kullan veya Özel Değerler Yaz. Boş Liste Kaydetmek O Sağlayıcıyı Kaldırır. Özgün Adı Koruyup Takma Ad Eklemek için 'Özgün Adı Koru' Seçeneğini Etkinleştir.",
     "alias_name_placeholder": "Kaynak Model Adı",
     "alias_placeholder": "Takma Ad (Zorunlu)",
@@ -810,9 +810,9 @@
     "diagram_tap_hint": "Dokunmatik Aygıtlarda: Bir Kaynak Modele Dokun, Sonra Bağlamak için Bir Takma Ada Dokun.",
     "view_mode_diagram": "Diyagram",
     "view_mode_list": "Liste",
-    "upgrade_required": "Bu Özellik Daha Yeni Bir CLIProxyAPI (CPA) Sürümü Gerektirir. Lütfen Yükselt.",
-    "upgrade_required_title": "Lütfen CLIProxyAPI Sürümünü Yükselt",
-    "upgrade_required_desc": "Geçerli Sunucu OAuth Model Takma Adları API Değerini Desteklemiyor. En Son CLIProxyAPI (CPA) Sürümüne Yükselt."
+    "upgrade_required": "Bu Özellik Daha Yeni Bir Styx Proxy Sürümü Gerektirir. Lütfen Yükselt.",
+    "upgrade_required_title": "Lütfen Styx Proxy Sürümünü Yükselt",
+    "upgrade_required_desc": "Geçerli Sunucu OAuth Model Takma Adları API Değerini Desteklemiyor. En Son Styx Proxy Sürümüne Yükselt."
   },
   "model_rules": {
     "section_label": "Model Kuralları",
@@ -963,7 +963,7 @@
     "oauth_callback_required": "Lütfen Önce Tam Yönlendirme URL Değerini Yapıştır.",
     "oauth_callback_success": "Geri Çağrı URL'si Gönderildi. Kimlik Doğrulamayı Beklemeye Devam Et.",
     "oauth_callback_error": "Geri Çağrı URL'si Gönderilemedi:",
-    "oauth_callback_upgrade_hint": "CLIProxyAPI Sürümünü Güncelle veya Bağlantıyı Kontrol Et.",
+    "oauth_callback_upgrade_hint": "Styx Proxy Sürümünü Güncelle veya Bağlantıyı Kontrol Et.",
     "oauth_callback_status_success": "Geri Çağrı URL'si Gönderildi. Kimlik Doğrulama Bekleniyor...",
     "oauth_callback_status_error": "Geri Çağrı URL Gönderimi Başarısız:",
     "missing_state": "Kimlik Doğrulama state Parametresi Alınamadı",
@@ -1066,9 +1066,9 @@
     "request_log_download_success": "İstek Günlüğü Başarıyla İndirildi",
     "empty_title": "Kullanılabilir Günlük Yok",
     "empty_desc": "“Dosyaya Günlük Tutmayı Etkinleştir” Açıkken Günlükler Burada Görünür",
-    "cpa_file_logging_required": "Bağlı Çalışma Zamanı CPA. Günlük Görüntüleme için Önce Dosyaya Günlük Tutma Etkin Olmalıdır.",
+    "cpa_file_logging_required": "Bağlı Çalışma Zamanı Styx Proxy. Günlük Görüntüleme için Önce Dosyaya Günlük Tutma Etkin Olmalıdır.",
     "cpa_file_logging_required_title": "Dosyaya Günlük Tutma Gerekli",
-    "cpa_file_logging_required_desc": "CPA Bu Günlük Görünümünü Yerel Günlük Dosyalarından Okur. Yapılandırmada Dosyaya Günlük Tutmayı Etkinleştir, Sonra Yenile.",
+    "cpa_file_logging_required_desc": "Styx Proxy Bu Günlük Görünümünü Yerel Günlük Dosyalarından Okur. Yapılandırmada Dosyaya Günlük Tutmayı Etkinleştir, Sonra Yenile.",
     "file_logging_required": "Bu Günlük Uç Noktası, Dosya Günlükleri Okunmadan Önce Dosyaya Günlük Tutma Gerektirir.",
     "file_logging_required_title": "Dosyaya Günlük Tutma Gerekli",
     "file_logging_required_desc": "Bu Günlük Uç Noktası Yerel Günlük Dosyalarını Okur. Yapılandırmada Dosyaya Günlük Tutmayı Etkinleştir, Sonra Yenile.",
@@ -1389,7 +1389,7 @@
           "plugin_store_sources": "Üçüncü Taraf Eklenti Kaynakları",
           "plugin_store_sources_desc": "Eklenti Mağazası Kayıt Kaynaklarını Ekle. Yerleşik Resmi Kaynak Her Zaman Korunur",
           "plugin_store_sources_label": "Eklenti Kaynağı Kayıt URL'si (plugins.store-sources)",
-          "plugin_store_sources_placeholder": "https://example.com/cliproxy-plugins/registry.json",
+          "plugin_store_sources_placeholder": "https://example.com/styx-proxy-plugins/registry.json",
           "plugin_store_auth": "Eklenti Mağazası Kimlik Doğrulama Kuralları",
           "plugin_store_auth_hint": "Gerçek Belirteçleri Değil, Yalnızca Ortam Değişkeni Adlarını Gir. Arka Uç Değerleri Çalışma Zamanı Ortamından Okur.",
           "store_auth_empty": "Kimlik Doğrulama Kuralı Yapılandırılmadı. Genel Eklenti Kaynaklarının Buna İhtiyacı Yok.",
@@ -1862,7 +1862,7 @@
     "description_show_more": "Daha Fazla Göster",
     "description_show_less": "Daha Az Göster",
     "source_name": "Kaynak: {{source}}",
-    "cli_proxy_api_source": "CLIProxyAPI Kaynağı",
+    "cli_proxy_api_source": "Styx Proxy Kaynağı",
     "refresh": "Yenile",
     "retry": "Yeniden Dene",
     "load_failed": "Eklenti Mağazası Yüklenemedi",
@@ -1949,7 +1949,7 @@
     "models_catalog_refresh_success": "Model kataloğu güncellendi.",
     "models_catalog_refresh_failed": "Model kataloğu güncellenemedi",
     "title": "Yönetim Merkezi Bilgisi",
-    "about_title": "Styx Router",
+    "about_title": "Styx Proxy",
     "models_title": "Kullanılabilir Modeller",
     "models_desc": "“Listeyi yenile”ye tıklayarak güncel kullanılabilir modelleri görüntüleyin. Yeni bir model görünmüyorsa “Model kataloğunu güncelle”yi deneyin.",
     "models_loading": "Kullanılabilir Modeller Yükleniyor...",
@@ -2018,7 +2018,7 @@
     "auth_files_count": "Kimlik Doğrulama Dosyaları: {{count}}"
   },
   "footer": {
-    "api_version": "CLIProxyAPI Sürümü",
+    "api_version": "Styx Proxy Sürümü",
     "build_date": "Derleme Zamanı",
     "version": "Yönetim Arayüzü Sürümü"
   },

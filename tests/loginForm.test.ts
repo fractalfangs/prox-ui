@@ -98,10 +98,10 @@ describe('login copy', () => {
       const { login, title, splash, system_info } = await Bun.file(
         `src/i18n/locales/${language}.json`
       ).json();
-      expect(title.login).toBe('Styx Router');
-      expect(title.abbr).toBe('Styx Router');
-      expect(splash.title).toBe('Styx Router');
-      expect(system_info.about_title).toBe('Styx Router');
+      expect(title.login).toBe('Styx Proxy');
+      expect(title.abbr).toBe('Styx Proxy');
+      expect(splash.title).toBe('Styx Proxy');
+      expect(system_info.about_title).toBe('Styx Proxy');
       expect(login.connection_edit.length).toBeGreaterThan(0);
       expect(login.show_key.length).toBeGreaterThan(0);
       expect(login.hide_key.length).toBeGreaterThan(0);
@@ -115,7 +115,7 @@ describe('login copy', () => {
 describe('login brand mark', () => {
   test('shows the full English product name in every language', async () => {
     const source = await Bun.file('src/pages/LoginPage.tsx').text();
-    expect(source).toContain("LOGIN_BRAND_NAME = 'Styx Router'");
+    expect(source).toContain("LOGIN_BRAND_NAME = 'Styx Proxy'");
     expect(source).toMatch(/className=\{styles\.brandName\}[^>]*>\s*\{LOGIN_BRAND_NAME\}/);
   });
 });
