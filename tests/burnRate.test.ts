@@ -126,6 +126,30 @@ describe('burn rate observations', () => {
     expect(weekly[0].usedPercent).toBe(23);
   });
 
+  test('shows Copilot premium consumption without inventing a reset time', () => {
+    const windows = buildBurnRateWindows(
+      'copilot',
+      quota({
+        status: 'success',
+        data: { remaining: 240, entitlement: 300, percentRemaining: 80 },
+      }),
+      t
+    );
+    expect(windows).toEqual([
+      { id: 'premium', label: t('copilot_quota.premium'), usedPercent: 20 },
+    ]);
+    expect(buildBurnRateWindows('copilot', { status: 'success' }, t)).toEqual([]);
+    const html = render(
+      quota({
+        status: 'success',
+        data: { remaining: 240, entitlement: 300, percentRemaining: 80 },
+      }),
+      [{ type: 'copilot', file: { name: 'copilot.json', provider: 'copilot' } }]
+    );
+    expect(html).toContain('20% consumed');
+    expect(html).toContain(t('copilot_quota.premium'));
+  });
+
   test('keeps same-file plugin identities and different providers distinct', () => {
     const entry = (authIndex: string): QuotaFileEntry => ({
       type: 'plugin',

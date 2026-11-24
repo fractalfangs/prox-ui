@@ -3,6 +3,7 @@ import type {
   AntigravityQuotaState,
   ClaudeQuotaState,
   CodexQuotaState,
+  CopilotQuotaState,
   DevinQuotaState,
   KimiQuotaState,
   MetaQuotaState,
@@ -49,6 +50,18 @@ export function buildBurnRateWindows(
           : window.label,
         usedPercent: percent(window.usedPercent),
       }));
+    case 'copilot': {
+      const data = (quota as CopilotQuotaState).data;
+      return data
+        ? [
+            {
+              id: 'premium',
+              label: t('copilot_quota.premium'),
+              usedPercent: inverse(data.percentRemaining),
+            },
+          ]
+        : [];
+    }
     case 'devin':
       return (quota as DevinQuotaState).windows.map((window) => ({
         id: window.id,
